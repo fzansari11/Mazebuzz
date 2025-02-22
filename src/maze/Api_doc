@@ -1,0 +1,873 @@
+******************************************************************************************************
+
+SECTION I   USERS APIS
+
+******************************************************************************************************
+           
+Below apis are CRUD (Create, Request, Update, Delete) for Users. 
+
+1) Create User
+Request
+————-
+http://33.33.33.33:5000/users POST
+{
+  "firstName" : "X",
+  "lastName"  : "Y",
+  "emailId"     : "f2@gm.co",
+  "password"  : "123",
+  "city"      : "santa",
+  "state"     : "ca",
+  "zipcode"       : 95050,
+  "country"   : "usa",
+}
+
+Response
+—————
+
+2) Get User
+Request
+—————
+http://33.33.33.33:5000/users/<userid> GET
+
+Response
+——————
+{
+  "emailId": "j6@gm.co",
+  "userId": 11,
+  "profilePicture": "http://10.0.0.20/upload/profile_default.png",
+  "ethnicity": "",
+  "city": "new jersey",
+  "isProfessional": true,
+  "noOfVoiceCalls": 0,
+  "zipcode": 95050,
+  "totalApptmentNotifications": 0,
+  "state": "ny",
+  "phoneNumber": 0,
+  "totalInboxNotifications": 0,
+  "lastOnline": "2015-11-21 05:45:46",
+  "professionName": "doctor",
+  "noOfVideoCalls": 0,
+  "isOnline": false,
+  "noOfTimesPaid": 0,
+  "noOfReviewsReqs": 0,
+  "firstName": "Arynn",
+  "lastName": "Zhamra",
+  "isPhoneVerified": false,
+  "country": "usa",
+  "noOfQuestAsked": 0
+}
+
+3) Update User - [ Pass one or as many fields as you want]
+There are fields in User's attributes table that just need to be incremented. These fields include no of voice calls, no of questions asked etc. 
+When this field needs to be updated just pass it in the format given below i.e. "Attributes":["<attribute name>"]
+Request
+—————
+http://33.33.33.33:5000/users/<userid> PUT
+{
+  "city":"sf",
+  "state":"va",
+  "Attributes":["noOfQuestAsked","noOfVoiceCalls"]
+}
+
+Response
+——————-
+
+4) Delete User
+Request
+——————
+http://33.33.33.33:5000/users/<userid>  DELETE
+
+Response
+-------
+
+
+******************************************************************************************************
+
+SECTION II  PROFESSIONAL APIS
+
+******************************************************************************************************
+
+Below apis are CRUD (Create, Request, Update, Delete) for Professionals. 
+
+Professional related apis
+1) Create a professional
+———
+Request
+——
+http://33.33.33.33:5000/professionals POST
+{
+  "userId" : 9,
+  "professionId" : 1
+}
+
+Response
+——
+
+
+2) Update a professional [ Pass one or as many fields as you want]
+——
+Request
+--
+http://33.33.33.33:5000/professionals/6
+{
+  "worksAt":"Brocade Communications",
+  "highestDegree": "Masters",
+  "schoolAttended":"University of Southern California",
+  "degreeSubject": "Computer Science",
+  "degrees": "Bachelors,High School",
+  "schools": "Mumbai University",
+  "courses": "electronics,science",
+  "specializations": "networking, python",
+  "certifications": "python expert",
+  "languages": "english, hindi",
+  "specialNotes":"I am a good guy",
+  "acceptsVoice":true
+}
+
+
+3) Get a professional
+————————
+Request
+———
+http://33.33.33.33:5000/professionals/3 GET
+
+Response
+——
+{
+  "emailId": "j6@gm.co",
+  "worksAt": "Brocade Communications",
+  "userId": 11,
+  "totalReviews": 0,
+  "linkedinUrl": "",
+  "num4star": 0,
+  "num5star": 0,
+  "keywords": [
+    "mechanic",
+    "plumbing"
+  ],
+  "imageUrl5": "",
+  "imageUrl4": "",
+  "imageUrl3": "",
+  "profilePicture": "http://10.0.0.20/upload/profile_default.png",
+  "ethnicity": "",
+  "city": "new jersey",
+  "isProfessional": true,
+  "specializations": [
+    "networking",
+    "python"
+  ],
+  "backgroundCheck": false,
+  "zipcode": 95050,
+  "imageUrl2": "",
+  "languages": [
+    "english",
+    " hindi"
+  ],
+  "affiliations": "",
+  "state": "ny",
+  "offers": [
+    {
+      "title": "mera offer",
+      "price": 15,
+      "offerId": 5,
+      "video": "",
+      "details": "all my details",
+      "image3": "",
+      "image2": "",
+      "image1": "url1"
+    },
+    {
+      "title": "mera mba offer",
+      "price": 15,
+      "offerId": 6,
+      "video": "",
+      "details": "all my details",
+      "image3": "",
+      "image2": "",
+      "image1": "url1"
+    }
+  ],
+  "phoneNumber": 0,
+  "imageUrl1": "",
+  "professionId": 2,
+  "lastOnline": "2015-11-21 05:45 AM",
+  "professionName": "doctor",
+  "isVerified": false,
+  "degreeSubject": "Computer Science",
+  "numVoiceCalls": 0,
+  "isOnline": false,
+  "businessCheck": false,
+  "highestDegree": "Masters",
+  "aboutMe": "",
+  "num3star": 0,
+  "numMissedAppoints": 0,
+  "acceptsQandA": false,
+  "avgRating": 0,
+  "schools": "Mumbai University",
+  "schoolAttended": "University of Southern California",
+  "num2star": 0,
+  "acceptsVoice": true,
+  "num1star": 0,
+  "certifications": "python expert",
+  "videoUrl": "",
+  "firstName": "Arynn",
+  "lastName": "Zhamra",
+  "acceptsVideo": false,
+  "isPhoneVerified": false,
+  "websiteUrl": "",
+  "courses": [
+    "electronics",
+    "science"
+  ],
+  "degrees": [
+    "Bachelors",
+    "High School"
+  ],
+  "specialNotes": "I am a good guy",
+  "numQuestionAnswered": 0,
+  "country": "usa",
+  "numVideoCalls": 0
+}
+
+4) Browse professionals. Get all Professionals
+————————----
+a) Browse professionals for profession id
+Request
+———
+http://33.33.33.33:5000/professionals/search/<professionId> GET
+
+Response
+——
+{
+  "userdata": [
+    {
+      "emailId": "j4@gm.co",
+      "worksAt": "",
+      "pwdhash": "pbkdf2:sha1:1000$BJP7fOl5$875b2028d0b65e7262cec3fba7cff7942aaef56f",
+      "userId": 9,
+      "totalReviews": 0,
+      "linkedinUrl": "",
+      "num4star": 0,
+      "schoolAttended": "",
+      "imageUrl5": "",
+      "imageUrl4": "",
+      "imageUrl3": "",
+      "imageUrl2": "",
+      "imageUrl1": "",
+      "city": "oregon",
+      "isProfessional": true,
+      "specializations": "",
+      "backgroundCheck": false,
+      "zipcode": 95050,
+      "profilePicture": "http://10.0.0.20/upload/profile_default.png",
+      "languages": "",
+      "affiliations": "",
+      "state": "wa",
+      "phoneNumber": 0,
+      "ethnicity": "",
+      "professionId": 2,
+      "lastOnline": "2015-11-21 05:45:38",
+      "professionName": "doctor",
+      "isVerified": false,
+      "degreeSubject": "",
+      "numVoiceCalls": 0,
+      "isOnline": false,
+      "businessCheck": false,
+      "highestDegree": "",
+      "aboutMe": "",
+      "numMissedAppoints": 0,
+      "acceptsQandA": false,
+      "avgRating": 0,
+      "schools": "",
+      "num5star": 0,
+      "num2star": 0,
+      "acceptsVoice": false,
+      "num1star": 0,
+      "certifications": "",
+      "videoUrl": "",
+      "firstName": "Alwayn",
+      "lastName": "Master",
+      "acceptsVideo": false,
+      "isPhoneVerified": false,
+      "websiteUrl": "",
+      "courses": "",
+      "degrees": "",
+      "specialNotes": "",
+      "numQuestionAnswered": 0,
+      "num3star": 0,
+      "country": "usa",
+      "numVideoCalls": 0
+    }
+  ],
+  "entries per page": "10",
+  "Total pages": 1,
+  "Total entries": 8
+}
+
+6) Browse professionals using Keyword
+Request
+------
+http://33.33.33.33:5000/professionals/keyword/plumbing GET
+
+Response
+--------
+[
+  {
+    "acceptsVideo": false,
+    "userId": 11,
+    "acceptsQandA": false,
+    "professionId": 2,
+    "acceptsVoice": true,
+    "isVerified": false
+  },
+  {
+    "acceptsVideo": false,
+    "userId": 12,
+    "acceptsQandA": false,
+    "professionId": 2,
+    "acceptsVoice": false,
+    "isVerified": false
+  }
+]
+
+******************************************************************************************************
+
+SECTION III   PROFESSIONS APIS
+
+******************************************************************************************************
+
+Professions are divided into two categories 
+- Professions - engineer, doctor, lawyer
+- Subprofessions - mechanical, computes, internal medicine
+
+1) Create Profession
+Request
+————
+http://33.33.33.33:5000/professions POST
+{
+  "professionName"  : "Engineer"
+}
+
+Response
+—————
+
+
+2) Create Subprofession
+Request
+————
+http://33.33.33.33:5000/professions/sub POST
+{
+    "parentProfessionName"  : "Engineer",
+    "professionName"  : "mechanical"
+}
+
+Response
+—————
+
+3) Get all professions
+Request
+————-
+http://33.33.33.33:5000/professions GET
+
+Response
+—————
+{
+  "engineering": [
+    {
+      "mechanical": 5001
+    },
+    {
+      "All": 1
+    }
+  ],
+  "teacher": [
+    {
+      "pediatrician": 5002
+    },
+    {
+      "oncologist": 5003
+    },
+    {
+      "general practise": 5004
+    },
+    {
+      "All": 2
+    }
+  ],
+  "lawyer": [
+    {
+      "pediatrician": 5002
+    },
+    {
+      "oncologist": 5003
+    },
+    {
+      "general practise": 5004
+    },
+    {
+      "All": 2
+    }
+  ],
+  "doctor": [
+    {
+      "pediatrician": 5002
+    },
+    {
+      "oncologist": 5003
+    },
+    {
+      "general practise": 5004
+    },
+    {
+      "All": 2
+    }
+  ]
+}
+
+
+******************************************************************************************************
+
+SECTION III   CONVERSATIONS APIS
+
+******************************************************************************************************
+
+1) Send a new message. Create a new conversation
+Request
+-------
+http://33.33.33.33:5000/users/message/9 POST
+{
+  "toUser" : 5,
+  "content"  : "HI, I want to know aaaaaaaa bbbaaaaaabbbbbbbbbbbbbbb",
+  "hasAttachment"     : true,
+  "subject" : "info regarding something",
+  "attachmentUrl1"  : "https://www.google.com/search?q=images&espv=2&biw=1226&bih=635&source=lnms&tbm=isch&sa=X&ved=0CAYQ_AUoAWoVChMI54u8q9iLyAIVUjKICh2F3AVP&dpr=2#imgrc=1ELkUmsjmLnCiM%3A"
+}
+
+Response 
+-------
+
+2) Send a new message. Existing conversation
+Request
+------
+http://33.33.33.33:5000/users/message/5 POST
+{
+  "convId" : 5,    
+  "toUser" : 9,
+  "content"  : "HI, I want to know aaaaaaaa bbbaaaaaabbbbbbbbbbbbbbb",
+  "hasAttachment"     : true,
+  "attachmentUrl1"  : "https://www.google.com/search?q=images&espv=2&biw=1226&bih=635&source=lnms&tbm=isch&sa=X&ved=0CAYQ_AUoAWoVChMI54u8q9iLyAIVUjKICh2F3AVP&dpr=2#imgrc=1ELkUmsjmLnCiM%3A"
+}
+
+Response
+------
+
+3) Get all conversations
+Requests
+-------
+http://33.33.33.33:5000/users/conversations/9 GET
+
+Response
+-------
+{
+  "Latest Read": {
+    "typedText": "",
+    "Messages": [
+      {
+        "timeStamp": "2015-12-04 07:01:12",
+        "hasAttachment": true,
+        "attachmentUrl2": "",
+        "content": "HI, I want to know aaaaaaaa bbbaaaaaabbbbbbbbbbbbbbb",
+        "toUser": 5,
+        "messageId": 32,
+        "fromUser": 9,
+        "atttachmentUrl1": "",
+        "isUnread": true
+      }
+    ],
+    "ConvId": 19
+  },
+  "Conversations": [
+    {
+      "withUser": 5,
+      "firstName": "X",
+      "timestamp": "2015-12-04 07:02:33",
+      "hasUnread": true,
+      "convId": 5,
+      "isConversationOpen": true,
+      "profilePicture": "http://10.0.0.20/upload/profile_default.png",
+      "lastName": "Y",
+      "totalMessages": 3,
+      "professionName": "doctor",
+      "subject": "info regarding something"
+    },
+    {
+      "withUser": 5,
+      "firstName": "X",
+      "timestamp": "2015-12-04 07:01:12",
+      "hasUnread": false,
+      "convId": 19,
+      "isConversationOpen": true,
+      "profilePicture": "http://10.0.0.20/upload/profile_default.png",
+      "lastName": "Y",
+      "totalMessages": 1,
+      "professionName": "doctor",
+      "subject": "info regarding something"
+    }
+  ]
+}
+
+4) GET one conversation
+Request
+-------
+http://33.33.33.33:5000/users/conversation/5/5 GET
+Response
+-------
+{
+  "typedText": "Hi I am good how are you",
+  "Messages": [
+    {
+      "timeStamp": "2015-10-02 22:47:46",
+      "hasAttachment": true,
+      "attachmentUrl2": "",
+      "content": "HI, I want to know aaaaaaaa bbbaaaaaabbbbbbbbbbbbbbb",
+      "toUser": 5,
+      "messageId": 7,
+      "fromUser": 9,
+      "atttachmentUrl1": "",
+      "isUnread": true
+    },
+    {
+      "timeStamp": "2015-10-02 22:50:03",
+      "hasAttachment": true,
+      "attachmentUrl2": "",
+      "content": "HI, I want to know aaaaaaaa bbbaaaaaabbbbbbbbbbbbbbb",
+      "toUser": 9,
+      "messageId": 8,
+      "fromUser": 5,
+      "atttachmentUrl1": "",
+      "isUnread": true
+    }
+  ]
+}
+
+******************************************************************************************************
+
+SECTION III   APPOINTMENTS APIS
+
+******************************************************************************************************
+
+1) Schedule a new appointment
+Request
+------
+http://33.33.33.33:5000/users/appoint/schedule/2 POST
+{
+  "fromUser" : 1,
+  "toUser" : 2,
+  "day1" : "2015-10-02",
+  "starttime1" : "11:00 AM",
+  "endtime1" : "11:15 AM",
+  "duration" : 15,
+  "subject" : "my appointment",
+  "apptType" : "voice"
+}
+
+Response
+-------
+
+2) Get all Scheduled appointments
+Request
+------
+http://33.33.33.33:5000/users/appoint/schedule/2 GET
+
+Response
+-------
+{
+  "Appointments": [
+    {
+      "duration": 15,
+      "profilePicture": "http://10.0.0.20/upload/profile_default.png",
+      "subject": "ddd",
+      "withUser": 1,
+      "apptType": "voice",
+      "professionName": "doctor",
+      "appointId": 51,
+      "firstName": "Ravi",
+      "lastName": "Dubey"
+    },
+    {
+      "duration": 15,
+      "profilePicture": "http://10.0.0.20/upload/profile_default.png",
+      "subject": "ddd",
+      "withUser": 11,
+      "apptType": "voice",
+      "professionName": "doctor",
+      "appointId": 52,
+      "firstName": "Arynn",
+      "lastName": "Zhamra"
+    }
+  ]
+}
+3) Get single scheduled appointment
+Request
+------
+http://33.33.33.33:5000/users/appoint/schedule/<userId>/<appointId>  GET
+
+Response
+-------
+{
+  "isScheduled": true,
+  "duration": 15,
+  "day1": "2015-11-18",
+  "profilePicture": "http://10.0.0.20/upload/profile_default.png",
+  "subject": "ddd",
+  "time1": {
+    "starttime3": "09:00 PM",
+    "starttime2": "01:00 PM",
+    "starttime1": "08:00 AM",
+    "endtime1": "08:15 AM",
+    "endtime2": "01:15 PM",
+    "endtime3": "09:15 PM"
+  },
+  "scheduleday1": {
+    "total_appt": 2,
+    "times": [
+      {
+        "start": "08:00 AM",
+        "end": "08:15 AM"
+      },
+      {
+        "start": "12:15 PM",
+        "end": "12:30 PM"
+      }
+    ]
+  },
+  "apptType": "voice",
+  "professionName": "doctor",
+  "withUser": 1,
+  "appointId": 51,
+  "firstName": "Ravi",
+  "lastName": "Dubey"
+}
+
+4) Confirm appointment
+Request
+-------
+http://33.33.33.33:5000/users/appoint/confirm/2
+
+Response
+-------
+{
+  "appointId" : 51,
+  "isConfirmed" : true,
+  "confirmday" : "2015-11-17",
+  "confirmtime" : "08:00 AM"
+}
+
+5) Get all confirmed appointments
+Request
+-------
+http://33.33.33.33:5000/users/appoint/confirm/11 GET
+
+Response
+-------
+{
+  "Appointments": [
+    {
+      "confirmtime": "08:00 AM",
+      "toUser": 2,
+      "duration": 15,
+      "fromUser": 11,
+      "profilePicture": "http://10.0.0.20/upload/profile_default.png",
+      "subject": "ddd",
+      "withUser": 2,
+      "apptType": "voice",
+      "professionName": "doctor",
+      "appointId": 52,
+      "firstName": "John",
+      "lastName": "Doe",
+      "confirmday": "2015-11-17"
+    }
+  ]
+}
+
+6) Get status of latest confirmed appointment
+Request
+-------
+http://33.33.33.33:5000/users/appoint/status/51
+
+Response
+-------
+sample output 1
+{
+  "islive": false,
+  "apptValid": True
+}
+sample output 2
+{
+  "islive": True,
+  "apptValid": True
+}
+sample output 3
+{
+  "islive": False,
+  "apptValid": True,
+  "timeleft" : 5  [in minutes]
+}
+
+
+******************************************************************************************************
+
+SECTION III   SERVICES APIS
+
+******************************************************************************************************
+
+1) Create a Service
+Request
+------
+http://33.33.33.33:5000/service
+{
+ "serviceName" : "general advise",
+ "professionId" : 1
+}
+
+Response
+-------
+
+2) Get all Services for Profession Id
+
+Request
+------
+http://33.33.33.33:5000/service/1 GET
+
+Response
+--------
+[
+  {
+    "serviceId": 2,
+    "serviceName": "general advise"
+  }
+]
+
+3) Create a new Offer
+Request
+-------
+http://33.33.33.33:5000/offer/11 POST
+{
+  "title" : "my offer",
+  "price" : 15,
+  "details" : "all my details",
+  "image1" : "url1",
+  "keywords": "X, Y",
+  "serviceId" : 2
+}
+
+Response
+-------
+
+4) Get all Offers for Service Id
+Request
+-------
+http://33.33.33.33:5000/offers/service/2 GET
+
+Response
+--------
+[
+  {
+    "title": "mera offer",
+    "price": 15,
+    "offerId": 4,
+    "video": "",
+    "details": "all my details",
+    "image3": "",
+    "image2": "",
+    "image1": "url1"
+  },
+  {
+    "title": "mera offer",
+    "price": 15,
+    "offerId": 5,
+    "video": "",
+    "details": "all my details",
+    "image3": "",
+    "image2": "",
+    "image1": "url1"
+  }
+]
+
+5) Get all Offers for Profession Id
+Request
+------
+http://33.33.33.33:5000/offers/professional/11 GET
+
+Response
+--------
+[
+  {
+    "title": "mera offer",
+    "price": 15,
+    "offerId": 5,
+    "video": "",
+    "details": "all my details",
+    "image3": "",
+    "image2": "",
+    "image1": "url1"
+  },
+  {
+    "title": "mera mba offer",
+    "price": 15,
+    "offerId": 6,
+    "video": "",
+    "details": "all my details",
+    "image3": "",
+    "image2": "",
+    "image1": "url1"
+  }
+]
+
+6) Get all Offers for Keyword
+Request
+------
+http://33.33.33.33:5000/offers/keyword/me GET
+
+Response
+-------
+[
+  {
+    "title": "my offer",
+    "price": 15,
+    "offerId": 4,
+    "video": "",
+    "details": "all my details",
+    "image3": "",
+    "image2": "",
+    "image1": "url1"
+  },
+  {
+    "title": "mera offer",
+    "price": 15,
+    "offerId": 5,
+    "video": "",
+    "details": "all my details",
+    "image3": "",
+    "image2": "",
+    "image1": "url1"
+  }
+]
+
+7) Get one Offer
+Request
+-------
+http://33.33.33.33:5000/offer/5 GET
+
+Response
+-------
+{
+  "title": "mera offer",
+  "price": 15,
+  "offerId": 5,
+  "video": "",
+  "details": "all my details",
+  "image3": "",
+  "image2": "",
+  "image1": "url1"
+}

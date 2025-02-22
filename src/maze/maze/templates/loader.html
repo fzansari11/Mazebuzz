@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<!-- Vendor libraries -->
+<html lang="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">	
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" /> 
+ <script type="text/javascript" src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://33.33.33.33/resources/css/helper.css">
+          <script src="https://mazebuzz.com/resources/js/helper.js"></script> 
+     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+ <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+  
+<script>
+function social_login() {
+    if (typeof(Storage) !== "undefined") {
+        // Store
+        if(document.getElementById('error').getAttribute('name') != "")
+            {
+                                                                                             $("#loaderimg").remove();
+var strerr = '';
+                strerr = document.getElementById('error').getAttribute('name');
+   {
+     document.getElementById('redirectfailureid').innerHTML = ' <p id="loggedoutpid"> ' + strerr.replace(/\+/g, ' ') +'</p>';
+       
+        $("#redirectfailureid").css('display', '');
+                                $("#redirectfailureid").css('z-index', 12000);
+                                window.location.hash = '#redirectfailureid';
+
+                                $("#redirectfailureid").dialog({
+modal:true,
+title:'Error Occured',
+width:400,
+buttons: {
+        Ok: function() {
+            window.location.hash = '';
+                                           window.location.href = 'https://mazebuzz.com/mazeindex.html';
+        },
+  
+},
+                                      beforeClose: function () {
+                    window.location.hash = '';
+
+                                           window.location.href = 'https://mazebuzz.com/mazeindex.html';
+
+    }
+});
+       
+     }
+                     return;  
+
+            }
+        else
+            {
+        var user_id = document.getElementById("user_id").getAttribute('name');
+        if (user_id === 0) {
+            window.location.href = 'mazeindex.html?login=failed';
+        }
+        localStorage.setItem("userId", user_id);
+        localStorage.setItem("isPhoneVerified", document.getElementById("isPhoneVerified").getAttribute('name'));
+        localStorage.setItem("isEmailVerified", document.getElementById("isEmailVerified").getAttribute('name'));
+        localStorage.setItem("isProfessional", document.getElementById("isProfessional").getAttribute('name'));
+        localStorage.setItem("token", document.getElementById("token").getAttribute('name'));
+        localStorage.setItem("UserEmail",document.getElementById("UserEmail").getAttribute('name'));
+        var username = document.getElementById("userName").getAttribute('name');
+        localStorage.setItem("userName",username );
+        var referer = document.getElementById('referer').getAttribute('name');
+        window.location.href =  'https://mazebuzz.com' + referer;
+
+    }
+    }
+    else {
+        document.getElementById('logingerrorid').innerHTML = 'Sorry, your browser does not support Web Storage...Please refer to FAQ to see supported browsers';
+    }        
+};
+
+$( document ).ready(function() {
+        social_login();
+});
+</script>
+<header>
+<!--   header tells search engine that this is our header -->
+               <a style="text-decoration: none;"href="mazeindex.html">
+               <img src="https://mazebuzz.com/resources/css/img/logo.png" alt = "Service Maze Logo" class = "Logo" > <sup style="font-size:0.9em;color:#ffb100;">&reg;</sup>
+
+                   </a>
+                
+                   <ul class="main-nav" id = "mainnav" > 
+                          
+                                       
+                        <li><a href="browse.html">Browse by profession</a></li>
+                        <li><a href="#" >Help</a></li>
+                        <li id="login" ><a id="alogin" href="#" onclick="enablelogdiv()">Login</a></li>
+                        <li id="profilemenunew" style="margin-right:50px;display:none;">
+            
+             <div  id="userinfolinew" style="margin-right:10px;">
+                        
+               <!--  <span id="notification_count"></span> -->
+
+         <a href="#" class="glyphicon glyphicon-list envelope" style = "text-decoration:none" id="userinfonew"</a> 
+            
+            
+             <div id="userinfoContainer" style="padding-top:0;max-height:200px;"> 
+                 <div id="userinfobody" >
+                 
+                     <a id="headernametag" class =" headernametagclass "></a> 
+                 <a style="  font-size:10px;  font-family: sans-serif,serif;
+;margin-left:30px;color:black;"href="profile.html">My Account</a> &nbsp;&nbsp; <br>
+                 <a style="    font-family: sans-serif,serif; font-size:10px;
+;margin-left:30px;color:black;"href="#" onclick="javascript:logmeout();">Logout</a>
+<p></p>                
+                 </div> 
+                
+                </div>
+                
+                
+            </div>
+              
+        </li>  
+                       
+                       <li style="color:black;font-size:0.8em;font-family :   sans-serif;">
+                            <input onkeypress="uponentersearch(event)" id="searchmazeidval"  style="padding:3px;" type="text" placeholder="Search by maze Id" >
+   <span  onclick= "searchbymazeid(this);" class="glyphicon glyphicon-search " style="margin-left:-5px;color:white;padding:8px;font-size:10px;cursor:pointer;background:#e28b00;padding-top:7px;"></span>
+                                                      <span id="errormzeidsearch" style="color:red;display:none">Maze Id not found</span>
+
+               
+      </li>
+    </ul>     
+</header>
+<body>
+
+<div class="container" id="user_id" name={{user_id}}>
+    <br><br>
+     <div id="redirectfailureid" style= "display:none;"title="Logged out">
+</div>
+    <div id="isPhoneVerified" name={{isPhoneVerified}}></div>
+    <div id="isEmailVerified" name={{isEmailVerified}}></div>
+    <div id="isProfessional" name={{isProfessional}}></div>
+    <div id="token" name={{token}}></div>
+    <div id="UserEmail" name={{emailstr}}></div>
+    <div id="userName" name={{username}}></div>
+    <div id="referer" name={{referer}}></div>
+    <div id="error" name={{error}}></div>
+<div class="row">
+        <div class="center">
+        <img id="loaderimg" alt="" src="https://mazebuzz.com/resources/img/loader.gif" />
+    </div>
+</div><!--/row-->
+</div>
+</body>
+</html>
+
