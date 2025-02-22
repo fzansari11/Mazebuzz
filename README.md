@@ -8,7 +8,7 @@ Maze application implemented using Flask microframework.
 
 * Clone the repo:
 
-$ git clone https://fzansari@bitbucket.org/78692/bb_maze.git YOUR_PROJECT_DIR/ 
+$ git clone 
 
 Create database schema:
 
@@ -33,6 +33,4 @@ Go to http://33.33.33.33:5000/ in your browser
 * Code review
 * Other guidelines
 
-### Who do I talk to? ###
 
-* admin@maze.com
